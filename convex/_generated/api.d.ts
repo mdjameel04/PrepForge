@@ -8,6 +8,8 @@
  * @module
  */
 
+import type * as questions from "../questions.js";
+import type * as session from "../session.js";
 import type * as user from "../user.js";
 
 import type {
@@ -17,6 +19,8 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
+  questions: typeof questions;
+  session: typeof session;
   user: typeof user;
 }>;
 

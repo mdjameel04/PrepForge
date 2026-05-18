@@ -22,7 +22,7 @@ const Navbar = () => {
   const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark')
 
   return (
-    <div className=' relative w-full max-w-6xl fixed top-4 left-1/2 -translate-x-1/2 px-4 z-50'>
+    <div className='w-full max-w-6xl fixed top-4 left-1/2 -translate-x-1/2 px-4 z-50'>
 
       {/* Main bar */}
       <div className='flex items-center justify-between rounded-2xl border border-white/10 bg-background dark:bg-black/40 backdrop-blur-xl py-3 px-4 md:px-8 shadow-[0_8px_30px_rgb(0,0,0,0.08)] shadow-black/20'>

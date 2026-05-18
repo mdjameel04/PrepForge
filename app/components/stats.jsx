@@ -66,7 +66,7 @@ const Stats = () => {
           ))}
         </div>
       </div>
-      <ur/>
+      <hr/>
     </div>
   );
 };

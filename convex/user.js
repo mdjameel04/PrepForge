@@ -1,5 +1,5 @@
 import { v } from "convex/values";
-import { mutation } from "./_generated/server";
+import { mutation, query } from "./_generated/server";
 
 export const createNewUser = mutation({
   args: {
@@ -36,3 +36,32 @@ export const createNewUser = mutation({
     return userData;
   },
 });
+
+
+// get user status for dashboard 
+
+export const getUserStats = query({
+  handler: async (ctx)=>{
+     // get logged in user identity from Clerk
+     const identity= await ctx.auth.getUserIdentity();
+      console.log(identity); // 👈 add here
+    console.log(identity?.email); // 👈 add here
+     if(!identity) return null
+ 
+      const user = await ctx.db
+      .query("userTable")
+      .withIndex("by_email",(q)=>q.eq("email",identity.email))
+      .unique();
+     if (!user) return null;
+
+     return {
+      userName: user.userName,
+      imageUrl: user.imageUrl,
+      streak: user.streak,
+      totalSessions: user.totalSessions,
+      totalQuestions: user.totalQuestions,
+      subscription: user.subscription,
+     }
+    
+    }
+})
